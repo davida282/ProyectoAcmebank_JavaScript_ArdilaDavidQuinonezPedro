@@ -70,51 +70,8 @@
   
     // Inicializar Firebase
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  
-    // Inicializar la base de datos
     const db = getDatabase();
   
-    // Función para guardar un usuario
-    function guardarUsuario(id, nombre, saldo) {
-      set(ref(db, 'usuarios/' + id), {
-        nombre: nombre,
-        saldo: saldo
-      })
-      .then(() => {
-        console.log("✅ Usuario guardado correctamente");
-      })
-      .catch((error) => {
-        console.error("❌ Error al guardar usuario:", error);
-      });
-    }
-  
-    // Función para leer un usuario
-    function leerUsuario(id) {
-      const dbRef = ref(db);
-      get(child(dbRef, `usuarios/${id}`)).then((snapshot) => {
-        if (snapshot.exists()) {
-          console.log("📥 Usuario encontrado:", snapshot.val());
-        } else {
-          console.log("⚠️ No se encontró el usuario.");
-        }
-      }).catch((error) => {
-        console.error("❌ Error al leer:", error);
-      });
-    }
-  
-    // Puedes probarlas así:
-    guardarUsuario("001", "David Ardila", 1000000);
-    leerUsuario("001");
-  
-    // También puedes escuchar en tiempo real
-    const usuariosRef = ref(db, 'usuarios/');
-    onValue(usuariosRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log("📡 Cambios en la base de datos:", data);
-    });
-
-    
   
   </script>
     <script src="/js/autenticación.js"></script>
