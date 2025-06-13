@@ -8,11 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Actor&family=Afacad:ital,wght@0,400..700;1,400..700&family=Allerta&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Fredoka:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <div class="container">
     <div class="logo">
-      <div><span>banco</span> </div>
+      <div><span>banco</span><br><span class="acme">ACME</span></div>
     </div>
     <h2>Inicio de sesión</h2>
     
@@ -20,7 +21,16 @@
       <div class="input-group">
         
         <input type="text" placeholder="Documento">
-        <i class="dropdown-icon">▾</i>
+        <div class="contenedor" onclick="toggleMenu()">
+ <span class="flecha">▼</span>
+    <div class="opciones">
+        <a href="#" onclick="seleccionarOpcion(event)">TI</a>
+        <a href="#" onclick="seleccionarOpcion(event)">CC</a>
+        <a href="#" onclick="seleccionarOpcion(event)">TE</a>
+        <a href="#" onclick="seleccionarOpcion(event)">CE</a>
+    </div>
+</div>
+        
       </div>
       
       <div class="input-group">
@@ -36,11 +46,14 @@
       <button type="submit">Iniciar Sesión</button>
 
       <div class="extras">
-        <p>¿Olvidaste tu contraseña?</p>
-        <p>Usuario nuevo? <a href="#">Regístrate aquí</a></p>
+        <p class="forgot"><a href="#">¿Olvidaste tu contraseña?</a></p>
+        <p class="new">Usuario nuevo? <a href="#">Regístrate aquí</a></p>
       </div>
     </form>
   </div>
     <script src="/js/autenticación.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"></script>
+
 </body>
 </html>

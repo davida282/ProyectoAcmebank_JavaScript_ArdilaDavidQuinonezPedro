@@ -3,6 +3,7 @@
       margin: 0;
       padding: 0;
     }
+    
 
     body {
       font-family: 'Inter', sans-serif;
@@ -20,6 +21,18 @@
       width: 100%;
       background-color: #1e222d;
       text-align: center;
+    }
+    span {
+        font-family: 'actor', sans-serif;
+        letter-spacing: 2.0px;
+        font-size: 21px;
+    }
+
+    .acme {
+        font-family: 'Inter', sans-serif;
+        font-weight: 100 !important;
+        font-size: 30px;
+        letter-spacing: 4.2px;
     }
 
     .logo {
@@ -42,6 +55,7 @@
       font-size: 24px;
       color: white;
       font-family: 'Actor', sans-serif;
+      letter-spacing: 2.0px;
     }
 
     .input-group {
@@ -50,23 +64,22 @@
     }
 
     .input-group input {
-      width: 100%;
-      padding: 12px 40px 12px 40px;
+      width: 75%;
+      padding: 8px 30px 8px 30px;
       border-radius: 6px;
       border: none;
-      background-color: #d1d1d1;
+      background-color: #a9a9a9;
       font-size: 16px;
       color: #333;
     }
 
-    .input-group i {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 12px;
-      font-size: 18px;
-      color: #555;
-    }
+    
+
+    input::placeholder {
+    color: rgb(255, 255, 255);
+    font-family: 'Actor', sans-serif;
+    font-weight: 100 !important;
+}
 
     .input-group .dropdown-icon {
       right: 12px;
@@ -78,22 +91,26 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
+      font-size: 8.5px;
       margin-bottom: 20px;
       color: #ccc;
+      font-family: 'Manrope', sans-serif;
+      margin-left: 12%;
     }
+    
 
     button {
-      width: 100%;
-      padding: 12px;
-      background-color: #d1aa2a;
+      width: 35%;
+      padding: 7px;
+      background-color: #fdd842b8;
       color: white;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 300;
       border: none;
-      border-radius: 8px;
+      border-radius: 15px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      font-family: 'Manrope', sans-serif;
     }
 
     button:hover {
@@ -103,7 +120,14 @@
     .extras {
       font-size: 13px;
       color: #aaa;
-      margin-top: 15px;
+      margin-top: 20px;
+    }
+    .extras p {
+        font-family: 'Fredoka', sans-serif;
+    }
+    
+    .forgot {
+        font-size: 10px;
     }
 
     .extras a {
@@ -111,7 +135,61 @@
       text-decoration: none;
       font-weight: bold;
     }
+    
+    .new {
+        margin-top: 25px;
+    }
+    .contenedor {
+            position: relative;
+            display: inline-block;
+            background: #aeaeae;
+            padding: 7px 4px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: -9%;
+           
+        }
 
+        .texto-seleccionado {
+            margin-right: 10px;
+        }
+        .flecha {
+            color: black;
+            margin-left: -20%;
+            font-size: 15px;
+            text-align: center;
+            justify-content: center;
+            justify-items: center;
+            text-justify: center;
+            padding-left: 6px;
+
+        }
+        .opciones {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+            width: 150px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .opciones a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .opciones a:hover {
+            background: #ddd;
+        }
+
+        .contenedor.activo .opciones {
+            display: block;
+        }
     @media screen and (max-width: 480px) {
       h2 {
         font-size: 20px;
