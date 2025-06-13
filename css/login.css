@@ -1,0 +1,127 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #1e222d;
+      color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+      width: 100%;
+      background-color: #1e222d;
+      text-align: center;
+    }
+
+    .logo {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .logo span {
+      color: #f5d142;
+      font-weight: bold;
+    }
+
+    .logo .acme {
+      color: white;
+      font-size: 20px;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 24px;
+      color: white;
+      font-family: 'Actor', sans-serif;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 40px 12px 40px;
+      border-radius: 6px;
+      border: none;
+      background-color: #d1d1d1;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .input-group i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 12px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .input-group .dropdown-icon {
+      right: 12px;
+      left: auto;
+      pointer-events: none;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #d1aa2a;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #b99020;
+    }
+
+    .extras {
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 15px;
+    }
+
+    .extras a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 480px) {
+      h2 {
+        font-size: 20px;
+      }
+
+      .input-group input {
+        font-size: 14px;
+      }
+
+      button {
+        font-size: 14px;
+      }
+    }
