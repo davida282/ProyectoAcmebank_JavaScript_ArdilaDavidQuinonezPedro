@@ -3,10 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro</title>
+    <link href="/css/registro.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Actor&family=Afacad:ital,wght@0,400..700;1,400..700&family=Allerta&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Fredoka:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     
 </head>
 <body>
+     <div class="container">
+    <div class="logo">
+      <div><span>banco</span><br> <span class="acme">ACME</span></div>
+    </div>
+    <h2>Registro</h2>
+    <form>
+      <div class="input-group">
+        <select>
+          <option selected>Tipo de documento</option>
+          <option>TI</option>
+          <option>CC</option>
+          <option>TE</option>
+          <option>CE</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <select>
+          <option selected>Género</option>
+          <option>Masculino</option>
+          <option>Femenino</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        
+        <input type="text" placeholder="Número de documento" />
+      </div>
+      <div class="input-group">
+        <input type="text" placeholder="Número de teléfono" />
+      </div>
+
+      <div class="input-group">
+        <input type="text" placeholder="Nombres" />
+      </div>
+      <div class="input-group">
+        <input type="text" placeholder="Dirección" />
+      </div>
+
+      <div class="input-group">
+        <input type="text" placeholder="Apellidos" />
+      </div>
+      <div class="input-group">
+        <select>
+          <option selected>Ciudad de residencia</option>
+          <option>Bogotá</option>
+    <option>Medellín</option>
+    <option>Cali</option>
+    <option>Barranquilla</option>
+    <option>Cartagena</option>
+    <option>Bucaramanga</option>
+    <option>Manizales</option>
+    <option>Pereira</option>
+    <option>Armenia</option>
+    <option>Cúcuta</option>
+    <option>Ibagué</option>
+    <option>Pasto</option>
+    <option>Popayán</option>
+    <option>Santa Marta</option>
+    <option>Villavicencio</option>
+    <option>Neiva</option>
+    <option>Valledupar</option>
+    <option>Montería</option>
+    <option>Tunja</option>
+    <option>Riohacha</option>
+    <option>Quibdó</option>
+    <option>Florencia</option>
+    <option>Yopal</option>
+    <option>Mocoa</option>
+    <option>San Andrés</option>
+    <option>Arauca</option>
+    <option>Puerto Carreño</option>
+    <option>Inírida</option>
+    <option>Mitú</option>
+    <option>Leticia</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+       
+        <input type="password" placeholder="Contraseña" />
+      </div>
+      <div class="input-group">
+        
+        <input type="password" placeholder="Confirmar contraseña" />
+      </div>
+
+      <div class="button-container">
+        <button type="submit">Crear cuenta</button>
+      </div>
+
+      <div class="extra-links">
+        
+        <span>Ya tienes cuenta? <a href="/html/login.html">Inicia sesión</a></span>
+      </div>
+    </form>
+  </div>
     <script src="/js/autenticación.js"></script>
 </body>
 </html>
