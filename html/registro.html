@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Actor&family=Afacad:ital,wght@0,400..700;1,400..700&family=Allerta&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Fredoka:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/imgs/BancoLogo.png">
     
 </head>
 <body>
@@ -16,9 +17,9 @@
       <div><span>banco</span><br> <span class="acme">ACME</span></div>
     </div>
     <h2>Registro</h2>
-    <form>
+    <form id="registroForm">
       <div class="input-group">
-        <select>
+        <select id="tipoDoc">
           <option selected>Tipo de documento</option>
           <option>TI</option>
           <option>CC</option>
@@ -27,7 +28,7 @@
         </select>
       </div>
       <div class="input-group">
-        <select>
+        <select id="genero">
           <option selected>Género</option>
           <option>Masculino</option>
           <option>Femenino</option>
@@ -36,24 +37,24 @@
 
       <div class="input-group">
         
-        <input type="text" placeholder="Número de documento" />
+        <input type="text" id="documento" placeholder="Número de documento" />
       </div>
       <div class="input-group">
-        <input type="text" placeholder="Número de teléfono" />
-      </div>
-
-      <div class="input-group">
-        <input type="text" placeholder="Nombres" />
-      </div>
-      <div class="input-group">
-        <input type="text" placeholder="Dirección" />
+        <input type="text" id="telefono" placeholder="Número de teléfono" />
       </div>
 
       <div class="input-group">
-        <input type="text" placeholder="Apellidos" />
+        <input type="text" id="nombres" placeholder="Nombres" />
       </div>
       <div class="input-group">
-        <select>
+        <input type="text" id="direccion" placeholder="Dirección" />
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="apellidos" placeholder="Apellidos" />
+      </div>
+      <div class="input-group">
+        <select id="ciudad">
           <option selected>Ciudad de residencia</option>
           <option>Bogotá</option>
     <option>Medellín</option>
@@ -90,11 +91,11 @@
 
       <div class="input-group">
        
-        <input type="password" placeholder="Contraseña" />
+        <input type="password" id="contrasena" placeholder="Contraseña" />
       </div>
       <div class="input-group">
         
-        <input type="password" placeholder="Confirmar contraseña" />
+        <input type="email" id="email" placeholder="Correo Electrónico" />
       </div>
 
       <div class="button-container">
@@ -107,6 +108,8 @@
       </div>
     </form>
   </div>
+  <script src="/js/firebaseConfig.js" type="module">
+  </script>
     <script src="/js/autenticación.js"></script>
 </body>
 </html>

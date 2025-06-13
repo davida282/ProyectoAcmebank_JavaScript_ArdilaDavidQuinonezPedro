@@ -3,13 +3,14 @@ function toggleMenu() {
 }
 
 function seleccionarOpcion(event) {
-    event.preventDefault(); // Evita el redireccionamiento
+    event.preventDefault(); 
 
-    let textoSeleccionado = event.target.textContent; // Captura el texto de la opción
+    let textoSeleccionado = event.target.textContent; 
 
-    // Reemplaza la flecha por el texto de la opción seleccionada
+    
     document.querySelector('.flecha').textContent = textoSeleccionado;
 
-    // Oculta las opciones y cierra el menú
+    
     document.querySelector('.contenedor').classList.remove('activo');
 }
+

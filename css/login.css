@@ -38,6 +38,10 @@
     .logo {
       text-align: left;
       margin-bottom: 40px;
+      display: flex;
+    align-items: center; 
+    justify-content: left; 
+    gap: 15px; 
     }
 
     .logo span {
@@ -190,6 +194,12 @@
         .contenedor.activo .opciones {
             display: block;
         }
+
+        .bancologo {
+          height: 7.5vh;
+          margin: -20px; 
+        }
+
     @media screen and (max-width: 480px) {
       h2 {
         font-size: 20px;

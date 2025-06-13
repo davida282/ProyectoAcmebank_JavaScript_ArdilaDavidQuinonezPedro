@@ -8,12 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Actor&family=Afacad:ital,wght@0,400..700;1,400..700&family=Allerta&family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Fredoka:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/imgs/BancoLogo.png">
     
 </head>
 <body>
     <div class="container">
     <div class="logo">
-      <div><span>banco</span><br><span class="acme">ACME</span></div>
+      <div><span>banco</span><br><span class="acme">ACME</span></div><img src="/imgs/BancoLogo.png" alt="BancoLogo" class="bancologo">
     </div>
     <h2>Inicio de sesión</h2>
     
@@ -51,7 +52,73 @@
       </div>
     </form>
   </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+    import { getDatabase, ref, set, get, child, onValue } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyCnVIPEevJRjIk5rOryUofw9mLmZzVFUj0",
+      authDomain: "banco-acme-a5567.firebaseapp.com",
+      databaseURL: "https://banco-acme-a5567-default-rtdb.firebaseio.com",
+      projectId: "banco-acme-a5567",
+      storageBucket: "banco-acme-a5567.firebasestorage.app",
+      messagingSenderId: "304465915351",
+      appId: "1:304465915351:web:8da84d30dea719fb0a6f92",
+      measurementId: "G-Y22KLMB354"
+    };
+  
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  
+    // Inicializar la base de datos
+    const db = getDatabase();
+  
+    // Función para guardar un usuario
+    function guardarUsuario(id, nombre, saldo) {
+      set(ref(db, 'usuarios/' + id), {
+        nombre: nombre,
+        saldo: saldo
+      })
+      .then(() => {
+        console.log("✅ Usuario guardado correctamente");
+      })
+      .catch((error) => {
+        console.error("❌ Error al guardar usuario:", error);
+      });
+    }
+  
+    // Función para leer un usuario
+    function leerUsuario(id) {
+      const dbRef = ref(db);
+      get(child(dbRef, `usuarios/${id}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+          console.log("📥 Usuario encontrado:", snapshot.val());
+        } else {
+          console.log("⚠️ No se encontró el usuario.");
+        }
+      }).catch((error) => {
+        console.error("❌ Error al leer:", error);
+      });
+    }
+  
+    // Puedes probarlas así:
+    guardarUsuario("001", "David Ardila", 1000000);
+    leerUsuario("001");
+  
+    // También puedes escuchar en tiempo real
+    const usuariosRef = ref(db, 'usuarios/');
+    onValue(usuariosRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log("📡 Cambios en la base de datos:", data);
+    });
+
+    
+  
+  </script>
     <script src="/js/autenticación.js"></script>
+    
     
 
 </body>
