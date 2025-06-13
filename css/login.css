@@ -64,19 +64,35 @@
 
     .input-group {
       position: relative;
-      margin-bottom: 20px;
+      display: flex;
+      margin-bottom: 15px;
+      flex-direction: column;
+      gap: 10px;
+      
     }
 
     .input-group input {
-      width: 75%;
-      padding: 8px 30px 8px 30px;
+      width: 85%;
+      padding: 12px;
       border-radius: 6px;
       border: none;
       background-color: #a9a9a9;
       font-size: 16px;
       color: #333;
+      flex: 1;
     }
-
+    select {
+      width: 52px; /* Ajusta el tamaño del select */
+    padding: 8px;
+    font-size: 14px;
+    background-color: #a9a9a9;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    margin-left: 55vh;
+    top: -7.7vh;
+    height: 37px;
+    }
     
 
     input::placeholder {
