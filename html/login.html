@@ -18,23 +18,23 @@
     </div>
     <h2>Inicio de sesión</h2>
     
-    <form>
+    <form id="loginForm">
       <div class="input-group">
         
-        <input type="text" placeholder="Documento">
-        <div class="selectcontenedor"><select class="contenedor" id="tipoDoc">
+        <input type="text" id="documento"  placeholder="Documento" >
+        <div class="selectcontenedor"><select id="tipoDoc" class="contenedor">
           <option selected>▼</option>
-          <option>TI</option>
-          <option>CC</option>
-          <option>TE</option>
-          <option>CE</option>
+          <option value="TI">TI</option>
+          <option value="CC">CC</option>
+          <option value="TE">TE</option>
+          <option value="CE">CE</option>
         </select></div>
         
       </div>
       
       <div class="input-group">
         
-        <input type="password" placeholder="Contraseña">
+        <input type="password" id="contrasena" placeholder="Contraseña" minlength="8" maxlength="30" >
       </div>
 
       <div class="remember">
@@ -50,29 +50,8 @@
       </div>
     </form>
   </div>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-    import { getDatabase, ref, set, get, child, onValue } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
   
-    const firebaseConfig = {
-      apiKey: "AIzaSyCnVIPEevJRjIk5rOryUofw9mLmZzVFUj0",
-      authDomain: "banco-acme-a5567.firebaseapp.com",
-      databaseURL: "https://banco-acme-a5567-default-rtdb.firebaseio.com",
-      projectId: "banco-acme-a5567",
-      storageBucket: "banco-acme-a5567.firebasestorage.app",
-      messagingSenderId: "304465915351",
-      appId: "1:304465915351:web:8da84d30dea719fb0a6f92",
-      measurementId: "G-Y22KLMB354"
-    };
-  
-    // Inicializar Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
-  
-  
-  </script>
-    <script src="/js/autenticación.js"></script>
+    <script type="module" src="/js/autenticación.js"></script>
     
     
 
