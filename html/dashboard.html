@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Página de Inicio - ACME</title>
     <link href="/css/dashboard.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,28 +12,24 @@
 </head>
 <body>
     <header>
-    <div class="logo">🏛️</div>
-    <div class="cerrar-sesion">Cerrar Sesión <span>🔓</span></div>
+    <img src="/imgs/BancoLogo.png" alt="bancoLogo" class="logo">
+    <div class="cerrar-sesion">Cerrar Sesión <a href="/html/login.html"><img src="/imgs/logoExit.png" alt="logoExit" class="logoExit"></a></div>
   </header>
 
-  <div class="bienvenida">Bienvenido, Usuario</div>
+ 
 
   <main>
     <div class="acciones">
-      <div class="accion">🧾 Resumen Transacciones</div>
-      <div class="accion">📲 Consignación Electrónica</div>
-      <div class="accion">💸 Retiro de Dinero</div>
-      <div class="accion">💡 Pago Servicios</div>
-      <div class="accion">🏦 Extracto Bancario</div>
-      <div class="accion">📄 Certificado Bancario</div>
+      <div class="accion"><img src="/imgs/resumenTransacciones.png" alt="resumenTransacciones" class="resumenTransacciones">Resumen Transacciones</div>
+      <div class="accion"><img src="/imgs/consignacionElectronica.png" alt="resumenTransacciones" class="resumenTransacciones"> Consignación Electrónica</div>
+      <div class="accion"><img src="/imgs/retiroDinero.png" alt="resumenTransacciones" class="resumenTransacciones"> Retiro de Dinero</div>
+      <div class="accion"><img src="/imgs/pagoServicios.png" alt="resumenTransacciones" class="resumenTransacciones"> Pago Servicios</div>
+      <div class="accion"><img src="/imgs/extractoBancario.png" alt="resumenTransacciones" class="resumenTransacciones"> Extracto Bancario</div>
+      <div class="accion"><img src="/imgs/certificadoBancario.png" alt="resumenTransacciones" class="resumenTransacciones"> Certificado Bancario</div>
     </div>
 
-    <div class="tarjeta">
-      <h3>Mi cuenta de ACME - Usuario</h3>
-      <p>1000000000000000</p>
-      <p>Saldo Disponible</p>
-      <p class="saldo">$ 2.654.112,00</p>
-    </div>
-  </main>
+    
+  </main> 
+  <script type="module" src="/js/dashboard.js"></script>
 </body>
 </html>

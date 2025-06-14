@@ -22,6 +22,7 @@ form.addEventListener('submit', async (e) => {
  const tipoDoc = tipoDocInput.value;
 const documento = documentoInput.value.trim();
   const contrasena = contrasenaInput.value.trim();
+  
 
   if (documento === "" || contrasena === "" || tipoDoc === "▼" || tipoDoc === "" ) {
     alert("⚠️ Por favor, completa todos los campos.");
@@ -72,6 +73,28 @@ const documento = documentoInput.value.trim();
   } catch (error) {
     console.error("Error durante el login:", error);
     alert("❌ Ocurrió un error al iniciar sesión.");
+  }
+});
+
+// 🔒 Si ya hay una sesión iniciada, evitar que vuelva al login con la flecha atrás
+const usuarioActivo = localStorage.getItem('usuarioActivo');
+
+if (usuarioActivo) {
+  history.pushState(null, null, location.href); // reemplaza el estado actual
+  window.addEventListener('popstate', function () {
+    history.pushState(null, null, location.href); // impide retroceder
+  });
+}
+// 🚫 Si no hay usuarioActivo, evitar volver al dashboard con la flecha atrás
+window.addEventListener('pageshow', function (event) {
+  const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+
+  // Si vienes del dashboard y no hay sesión activa, te redirige al login
+  if (event.persisted && !usuarioActivo) {
+    history.pushState(null, null, location.href); // Bloquea flecha atrás
+    window.addEventListener('popstate', () => {
+      history.pushState(null, null, location.href);
+    });
   }
 });
 

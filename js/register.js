@@ -123,7 +123,8 @@ apellidosInput.addEventListener('input', soloLetras);
               direccion: direccion,
               contrasena: contrasena,
               email: email,
-              fechaCreacion: new Date().toISOString()
+              fechaCreacion: new Date().toISOString(),
+              saldo: 500000
             });
         
             alert(`✅ Usuario registrado exitosamente.\nNúmero de cuenta: ${numeroCuenta}`);
