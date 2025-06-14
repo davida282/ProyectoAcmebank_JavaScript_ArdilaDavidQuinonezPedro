@@ -67,3 +67,16 @@ window.addEventListener('pageshow', function (event) {
     window.location.href = '/html/login.html';
   }
 });
+
+
+const cerrarSesionBtn = document.getElementById('cerrarSesion');
+
+cerrarSesionBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  // 🔥 Eliminar sesión
+  localStorage.removeItem('usuarioActivo');
+
+  // ✅ Redireccionar sin que quede en historial
+  location.replace('/html/login.html');
+});
