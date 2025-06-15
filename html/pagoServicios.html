@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pago de Servicios - ACME</title>
     <link href="/css/pagoServicios.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,50 @@
     <link rel="icon" type="image/png" href="/imgs/BancoLogo.png">
 </head>
 <body>
-    
+    <div class="container">
+    <div class="titulo">
+      <img src="/imgs/BancoLogo.png" alt="Banco" class="logo">
+      <h1>Pago de Servicios Públicos</h1>
+    </div>
+
+    <form class="formulario">
+      <div class="form-group">
+        <label for="cuenta">Núm de cuenta</label>
+        <input type="text" id="cuenta" disabled>
+      </div>
+
+      <div class="form-group">
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" disabled>
+      </div>
+
+      <div class="form-group">
+        <label for="servicio">Servicio</label>
+        <select id="servicio">
+          <option disabled selected>Seleccionar servicio a pagar</option>
+          <option value="agua">Agua</option>
+          <option value="luz">Luz</option>
+          <option value="gas">Gas</option>
+          <option value="internet">Internet</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="referencia">Referencia</label>
+        <input type="text" id="referencia" placeholder="Referencia de Recibo">
+      </div>
+
+      <div class="form-group">
+        <label for="cantidad">Cantidad</label>
+        <input type="text" id="cantidad" placeholder="$ Valor a Pagar">
+      </div>
+
+      <div class="botones">
+        <a href="dashboard.html" class="volver">Volver</a>
+        <button type="submit" class="confirmar">CONFIRMAR</button>
+      </div>
+    </form>
+  </div>
+  <script type="module" src="/js/pagoServicios.js"></script>
 </body>
 </html>

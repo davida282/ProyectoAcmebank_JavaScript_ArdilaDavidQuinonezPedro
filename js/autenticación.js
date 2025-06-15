@@ -53,7 +53,8 @@ const documento = documentoInput.value.trim();
           localStorage.setItem('usuarioActivo', JSON.stringify({
             id: key,
             nombres: usuario.nombres,
-            numeroCuenta: usuario.numeroCuenta
+            numeroCuenta: usuario.numeroCuenta,
+            apellidos: usuario.apellidos
           }));
 
           // 🚪 Redirigir al Dashboard

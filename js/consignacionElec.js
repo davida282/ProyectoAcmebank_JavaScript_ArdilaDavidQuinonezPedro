@@ -1,5 +1,6 @@
 import { db } from './firebaseConfig.js';
-import { get, ref, update } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+import { get, ref, update, push } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+
 
 
 const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
@@ -68,6 +69,8 @@ confirmarBtn.addEventListener('click', async (e) => {
   try {
     // 🔍 Consultar la cuenta destino
     const destinoRef = ref(db, `usuarios/${numeroCuenta}`);
+    // 🧠 Generar UNA vez la referencia
+    const numeroReferencia = Math.floor(100000000 + Math.random() * 900000000);
     const snapshotDestino = await get(destinoRef);
 
     if (!snapshotDestino.exists()) {
@@ -108,6 +111,7 @@ confirmarBtn.addEventListener('click', async (e) => {
     // 💰 Realizar la transferencia
     const nuevoSaldoRemitente = datosRemitente.saldo - cantidadNumerica;
     const nuevoSaldoDestino = datosDestino.saldo + cantidadNumerica;
+    
 
     // Actualizar ambos saldos en Firebase
     await update(ref(db, `usuarios/${usuarioActivo.numeroCuenta}`), {
@@ -118,12 +122,23 @@ confirmarBtn.addEventListener('click', async (e) => {
       saldo: nuevoSaldoDestino
     });
 
+    
+
+// Guardar transacción en Firebase (historial del remitente)
+const transaccionRef = ref(db, `transacciones/${usuarioActivo.numeroCuenta}`);
+await push(transaccionRef, {
+  fecha: new Date().toISOString(),
+  referencia: numeroReferencia, // ✅ la misma referencia
+  tipo: "Consignación electrónica",
+  concepto: `Consignación a la cuenta ${numeroCuenta}`,
+  valor: cantidadNumerica
+});
     alert(`✅ Consignación exitosa de $${cantidadNumerica.toLocaleString()} a ${datosDestino.nombres} ${datosDestino.apellidos}.`);
 
     // ✅ Guardar datos de la transacción y permiso antes de redirigir
 localStorage.setItem('datosConsignacion', JSON.stringify({
   fecha: new Date().toLocaleString(),
-  referencia: Math.floor(100000000 + Math.random() * 900000000), // número random de 9 cifras
+  referencia: numeroReferencia, // ✅ usamos la misma
   valor: cantidadNumerica
 }));
 
