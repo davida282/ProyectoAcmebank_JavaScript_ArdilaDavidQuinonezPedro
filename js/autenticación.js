@@ -54,7 +54,8 @@ const documento = documentoInput.value.trim();
             id: key,
             nombres: usuario.nombres,
             numeroCuenta: usuario.numeroCuenta,
-            apellidos: usuario.apellidos
+            apellidos: usuario.apellidos,
+            fechaCreacion : usuario.fechaCreacion
           }));
 
           // 🚪 Redirigir al Dashboard

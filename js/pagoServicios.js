@@ -1,5 +1,5 @@
 import { db } from './firebaseConfig.js';
-import { get, ref, update } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+import { get, ref, update, push } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
 window.addEventListener('DOMContentLoaded', () => {
   const cuentaInput = document.getElementById('cuenta');
@@ -51,6 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     const cantidadNumerica = parseInt(cantidad);
+    const numeroReferencia = Math.floor(100000000 + Math.random() * 900000000);
     if (cantidadNumerica < 10000) {
       alert("🚫 El valor a pagar debe ser mínimo $10.000.");
       return;
@@ -76,6 +77,24 @@ window.addEventListener('DOMContentLoaded', () => {
       const nuevoSaldo = userData.saldo - cantidadNumerica;
 
       await update(userRef, { saldo: nuevoSaldo });
+
+      // 📝 Guardar transacción en el historial de Firebase
+    const transaccionRef = ref(db, `transacciones/${usuarioActivo.numeroCuenta}`);
+    await push(transaccionRef, {
+    fecha: new Date().toISOString(),
+    referencia: numeroReferencia,
+    tipo: "Retiro",
+    concepto: `Pago de servicio público ${servicio}`,
+    valor: cantidadNumerica
+    });
+    // Guardar permiso y datos en localStorage
+  localStorage.setItem('permisoServicio', 'true');
+  localStorage.setItem('datosPagoServicio', JSON.stringify({
+  fecha: new Date().toLocaleString(),
+  referencia: numeroReferencia,
+  servicio: servicio,
+  valor: cantidadNumerica
+}));
 
       // Redirección si todo sale bien
       window.location.href = "/screens/completedServicio.html";

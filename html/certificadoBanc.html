@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Certificado Bancario - ACME</title>
     <link href="/css/certificadoBanc.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,42 @@
     <link rel="icon" type="image/png" href="/imgs/BancoLogo.png">
 </head>
 <body>
-    
+    <div class="container">
+    <div class="logo">
+      <img src="/imgs/BancoLogo.png" alt="logo" class="bancologo">
+      <div>
+        <span>Banco</span>
+        <div class="acme">ACME</div>
+      </div>
+    </div>
+
+    <p>Señor(a)</p>
+    <br>
+    <p id="mensajeCertificado">Cargando...</p>
+
+    <br><br>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>No. Producto</th>
+          <th>Fecha Apertura</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CUENTA DE AHORROS</td>
+          <td id="numeroCuenta">-</td>
+          <td id="fechaApertura">-</td>
+          <td>ACTIVA</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <button id="volver">Volver</button>
+  </div>
+    <script type="module" src="/js/certificadobanc.js"></script>
 </body>
 </html>

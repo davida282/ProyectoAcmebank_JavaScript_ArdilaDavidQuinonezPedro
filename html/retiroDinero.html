@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Retirar Dinero - ACME</title>
     <link href="/css/retiroDinero.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,34 @@
     <link rel="icon" type="image/png" href="/imgs/BancoLogo.png">
 </head>
 <body>
-    
+    <div class="container">
+        <div class="titulo">
+            <img src="/imgs/BancoLogo.png" alt="Banco" class="logo">
+            <h1>Retirar Dinero</h1>
+        </div>
+
+        <form class="formulario">
+            <div class="form-group">
+                <label for="cuenta">Núm de cuenta</label>
+                <input type="text" id="numCuenta" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="cantidad">Cantidad</label>
+                <input type="text" id="cantidad" placeholder="$ Valor a Retirar">
+            </div>
+
+            <div class="botones">
+                <a href="dashboard.html" class="volver">Volver</a>
+                <button type="submit" class="confirmar" id="confirmarBtn">CONFIRMAR</button>
+            </div>
+        </form>
+    </div>
+    <script type="module" src="/js/retiroDinero.js"></script>
 </body>
 </html>
