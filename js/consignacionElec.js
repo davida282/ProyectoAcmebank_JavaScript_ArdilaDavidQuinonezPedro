@@ -119,6 +119,20 @@ confirmarBtn.addEventListener('click', async (e) => {
     });
 
     alert(`✅ Consignación exitosa de $${cantidadNumerica.toLocaleString()} a ${datosDestino.nombres} ${datosDestino.apellidos}.`);
+
+    // ✅ Guardar datos de la transacción y permiso antes de redirigir
+localStorage.setItem('datosConsignacion', JSON.stringify({
+  fecha: new Date().toLocaleString(),
+  referencia: Math.floor(100000000 + Math.random() * 900000000), // número random de 9 cifras
+  valor: cantidadNumerica
+}));
+
+localStorage.setItem('permisoConsignacion', 'true');
+
+// ⏱️ Redirigir luego de guardar los datos
+setTimeout(() => {
+  window.location.href = "/screens/completedConsign.html";
+}, 300); // pequeño delay por seguridad
     
     setTimeout(() => {
    window.location.href = "/screens/completedConsign.html";
