@@ -54,6 +54,7 @@ body {
       font-weight: bold;
       transition: background-color 0.3s ease;
       font-family: 'Actor', sans-serif;
+      cursor: pointer;
     }
 
     .logoExit {
