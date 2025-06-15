@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resumen de Transacciones - ACME</title>
     <link href="/css/resumenTrans.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,35 @@
     
 </head>
 <body>
-    <script src="/js/resumenTrans.js"></script>
+    <div class="container">
+    <div class="logo">
+      <img src="/imgs/BancoLogo.png" class="bancologo" alt="Logo Banco ACME">
+      <span class="acme">BANCO ACME</span>
+    </div>
+
+    <h2>Resumen de Transacciones</h2>
+
+    <div class="tabla-contenedor">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Referencia</th>
+            <th>Tipo</th>
+            <th>Descripción</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-transacciones">
+          <!-- Aquí se insertarán las transacciones desde JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <button id="btnImprimir">Imprimir</button>
+    <div class="volver" id="volver">Volver al inicio</a>
+  </div>
+  
+    <script type="module" src="/js/resumenTrans.js"></script>
 </body>
 </html>

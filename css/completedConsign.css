@@ -65,4 +65,29 @@ p strong {
   cursor: pointer;
 }
 
+button {
+  margin-top: 30px;
+  display: inline-block;
+  background-color: #fdd842a8;
+  color: #121827;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: 'Manrope', sans-serif;
+  text-align: center;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b99020;
+}
+
+@media print {
+  #imprimir, #volver {
+    display: none;
+  }
+}
+
 

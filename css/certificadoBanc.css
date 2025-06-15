@@ -27,24 +27,27 @@ body {
   margin-bottom: 40px;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
   gap: 15px;
 }
 
 .logo span {
   color: #f5d142;
-  font-weight: bold;
+  font-weight: 100;
   font-size: 24px;
+  font-family: 'Actor', sans-serif;
+  
+ 
 }
 
 .logo .acme {
   color: white;
-  font-size: 20px;
+  font-size: 27px;
   letter-spacing: 4px;
 }
 
 .bancologo {
-  height: 7.5vh;
+  height: 11vh;
   margin: -20px;
 }
 
@@ -74,4 +77,10 @@ button {
 
 button:hover {
   background-color: #b99020;
+}
+
+@media print {
+  #imprimir, #volver {
+    display: none;
+  }
 }

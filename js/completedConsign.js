@@ -47,3 +47,8 @@ if (datosTransaccion) {
 volverBtn.addEventListener('click', () => {
   window.location.href = "/html/dashboard.html";
 });
+
+const imprimirBtn = document.getElementById("imprimir");
+imprimirBtn.addEventListener("click", () => {
+  window.print();
+});
