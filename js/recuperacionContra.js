@@ -43,8 +43,10 @@ inputDocumento.addEventListener("input", (e) => {
             break;
           }
         }
-
+    
         if (usuarioEncontrado) {
+            sessionStorage.setItem('recuperacionValida', 'true');
+            window.location.href = `/screens/nuevaContra.html?uid=${userId}`;
           // ✅ Usuario válido, redirigir
           window.location.href = `/screens/nuevaContra.html?uid=${userId}`;
         } else {
