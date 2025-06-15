@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+}
+
+body {
+    background-color: #121827;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    background-color: transparent;
+}
+
+.titulo {
+    text-align: left;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 60px;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 100;
+    font-family: 'Actor', sans-serif;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column; /* Keep this for stacking the form-groups */
+    gap: 20px;
+    
+}
+
+/* NEW: Styles for each form group (label + input) */
+.form-group {
+    display: flex; /* Make label and input sit side-by-side */
+    align-items: center; /* Vertically align them */
+    gap: 15px; /* Space between label and input */
+    
+}
+
+.form-group label {
+    flex-shrink: 0; /* Prevent label from shrinking */
+    width: 120px; /* Adjust this width as needed for your labels */
+    text-align: center; /* Align label text to the right */
+    font-weight: 100;
+    font-size: 1rem;
+    font-family: 'Allerta', sans-serif;
+}
+
+.form-group input { /* Target inputs inside form-group */
+    flex-grow: 1; /* Allow input to fill remaining space */
+    padding: 5px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #273656;
+    color: #fff;
+    font-size: 0.95rem;
+    font-family: 'Afacad', sans-serif;
+}
+
+/* Original input styles that still apply or are overridden */
+input::placeholder {
+    color: #aeb5c3;
+}
+
+input#cantidad {
+    background-color: #2d2f34;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.volver {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 100;
+}
+
+.confirmar {
+    padding: 8px 16px;
+    background-color: #fdd842a8;
+    color: #ffffff;
+    font-weight: 400;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Manrope', sans-serif;
+    margin-right: 142px;
+}
+
+.confirmar:hover {
+    background-color: #c2992c;
+}

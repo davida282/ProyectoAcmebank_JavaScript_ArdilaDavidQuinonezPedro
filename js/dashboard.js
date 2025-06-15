@@ -80,3 +80,16 @@ cerrarSesionBtn.addEventListener('click', (e) => {
   // ✅ Redireccionar sin que quede en historial
   location.replace('/html/login.html');
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const acciones = document.querySelectorAll(".accion");
+
+  acciones.forEach(accion => {
+    accion.addEventListener("click", () => {
+      const destino = accion.getAttribute("data-href");
+      if (destino) {
+        window.location.href = destino;
+      }
+    });
+  });
+});
