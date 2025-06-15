@@ -11,7 +11,43 @@
     <link rel="icon" type="image/png" href="/imgs/BancoLogo.png">
 </head>
 <body>
-    
+    <div class="container">
+    <div class="logo">
+      <div><span>banco</span><br><span class="acme">ACME</span></div>
+      <img src="/imgs/BancoLogo.png" alt="BancoLogo" class="bancologo">
+    </div>
+    <h2>Recuperación de contraseña</h2>
+    <div class="form-box">
+      
+
+      <form id="recuperarForm">
+        <p class="label">Introduzca el documento y tipo de documento</p>
+        <div class="input-group">
+          <input type="text" id="documento" placeholder="">
+          <div class="selectcontenedor">
+            <select id="tipoDoc" class="contenedor">
+              <option selected>▼</option>
+              <option value="TI">TI</option>
+              <option value="CC">CC</option>
+              <option value="TE">TE</option>
+              <option value="CE">CE</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="label">Introduzca su correo electronico</p>
+        <div class="input-group">
+          <input type="email" id="correo" placeholder="">
+        </div>
+
+        <button type="submit">Enviar</button>
+
+        <div class="extras">
+          <p class="forgot"><a href="/html/login.html">Volver</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
     <script type="module" src="/js/recuperacionContra.js"></script>
 </body>
 </html>
