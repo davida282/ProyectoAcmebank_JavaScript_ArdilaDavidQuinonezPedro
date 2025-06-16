@@ -1,16 +1,102 @@
-function toggleMenu() {
-    document.querySelector('.contenedor').classList.toggle('activo');
-}
+// autenticacion.js
+import { db } from './firebaseConfig.js';
+import { get, ref,  } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
-function seleccionarOpcion(event) {
-    event.preventDefault(); 
+const form = document.getElementById('loginForm');
 
-    let textoSeleccionado = event.target.textContent; 
+const tipoDocInput = document.getElementById('tipoDoc');
 
+const documentoInput = document.getElementById('documento');
+
+documentoInput.addEventListener('input', (e) => {
+  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+    });
     
-    document.querySelector('.flecha').textContent = textoSeleccionado;
+const contrasenaInput = document.getElementById('contrasena');
 
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault(); 
+
+  
+ const tipoDoc = tipoDocInput.value;
+const documento = documentoInput.value.trim();
+  const contrasena = contrasenaInput.value.trim();
+  
+
+  if (documento === "" || contrasena === "" || tipoDoc === "▼" || tipoDoc === "" ) {
+    alert("⚠️ Por favor, completa todos los campos.");
+    return;
+  }
+
+  try {
+    const usuariosRef = ref(db, 'usuarios');
+    const snapshot = await get(usuariosRef);
+    // 🔒 Validación del documento
+    const regexNumeros = /^\d{10}$/;
+    if (!regexNumeros.test(documento)) {
+    alert("🚫 El número de documento debe tener exactamente 10 dígitos numéricos.");
+    return;
+     }
     
-    document.querySelector('.contenedor').classList.remove('activo');
+    if (snapshot.exists()) {
+      const usuarios = snapshot.val();
+      let accesoConcedido = false;
+
+      for (let key in usuarios) {
+        const usuario = usuarios[key];
+
+        if (usuario.documento === documento && usuario.contrasena === contrasena && usuario.tipoDocumento === tipoDoc) {
+          accesoConcedido = true;
+
+          // ✅ Puedes guardar el ID de sesión si quieres
+          localStorage.setItem('usuarioActivo', JSON.stringify({
+            id: key,
+            nombres: usuario.nombres,
+            numeroCuenta: usuario.numeroCuenta,
+            apellidos: usuario.apellidos,
+            fechaCreacion : usuario.fechaCreacion
+          }));
+
+          // 🚪 Redirigir al Dashboard
+          window.location.href = 'dashboard.html';
+          break;
+        }
+      }
+
+      if (!accesoConcedido) {
+        alert("🚫 Documento o contraseña incorrectos.");
+      }
+
+    } else {
+      alert("❌ No hay usuarios registrados en el sistema.");
+    }
+
+  } catch (error) {
+    console.error("Error durante el login:", error);
+    alert("❌ Ocurrió un error al iniciar sesión.");
+  }
+});
+
+// 🔒 Si ya hay una sesión iniciada, evitar que vuelva al login con la flecha atrás
+const usuarioActivo = localStorage.getItem('usuarioActivo');
+
+if (usuarioActivo) {
+  history.pushState(null, null, location.href); // reemplaza el estado actual
+  window.addEventListener('popstate', function () {
+    history.pushState(null, null, location.href); // impide retroceder
+  });
 }
+// 🚫 Si no hay usuarioActivo, evitar volver al dashboard con la flecha atrás
+window.addEventListener('pageshow', function (event) {
+  const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+
+  // Si vienes del dashboard y no hay sesión activa, te redirige al login
+  if (event.persisted && !usuarioActivo) {
+    history.pushState(null, null, location.href); // Bloquea flecha atrás
+    window.addEventListener('popstate', () => {
+      history.pushState(null, null, location.href);
+    });
+  }
+});
 

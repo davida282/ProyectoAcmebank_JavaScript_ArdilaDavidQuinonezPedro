@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Registro - ACME</title>
     <link href="/css/registro.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,24 +14,24 @@
 <body>
      <div class="container">
     <div class="logo">
-      <div><span>banco</span><br> <span class="acme">ACME</span></div>
+      <div><span>banco</span><br> <span class="acme">ACME</span></div><img src="/imgs/BancoLogo.png" alt="BancoLogo" class="bancologo">
     </div>
     <h2>Registro</h2>
     <form id="registroForm">
       <div class="input-group">
         <select id="tipoDoc">
-          <option selected>Tipo de documento</option>
-          <option>TI</option>
-          <option>CC</option>
-          <option>TE</option>
-          <option>CE</option>
+          <option value="" selected disabled>Tipo de documento</option>
+          <option value="TI">TI</option>
+          <option value="CC">CC</option>
+          <option value="TE">TE</option>
+          <option value="CE">CE</option>
         </select>
       </div>
       <div class="input-group">
         <select id="genero">
-          <option selected>Género</option>
-          <option>Masculino</option>
-          <option>Femenino</option>
+          <option value="" selected disabled>Género</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
         </select>
       </div>
 
@@ -44,54 +44,54 @@
       </div>
 
       <div class="input-group">
-        <input type="text" id="nombres" placeholder="Nombres" />
+        <input type="text" id="nombres" minlength="3" maxlength="40" placeholder="Nombres"/>
       </div>
       <div class="input-group">
-        <input type="text" id="direccion" placeholder="Dirección" />
+        <input type="text" id="direccion" minlength="6"  placeholder="Dirección" />
       </div>
 
       <div class="input-group">
-        <input type="text" id="apellidos" placeholder="Apellidos" />
+        <input type="text" id="apellidos"  minlength="3" maxlength="40" placeholder="Apellidos"/>
       </div>
       <div class="input-group">
         <select id="ciudad">
-          <option selected>Ciudad de residencia</option>
-          <option>Bogotá</option>
-    <option>Medellín</option>
-    <option>Cali</option>
-    <option>Barranquilla</option>
-    <option>Cartagena</option>
-    <option>Bucaramanga</option>
-    <option>Manizales</option>
-    <option>Pereira</option>
-    <option>Armenia</option>
-    <option>Cúcuta</option>
-    <option>Ibagué</option>
-    <option>Pasto</option>
-    <option>Popayán</option>
-    <option>Santa Marta</option>
-    <option>Villavicencio</option>
-    <option>Neiva</option>
-    <option>Valledupar</option>
-    <option>Montería</option>
-    <option>Tunja</option>
-    <option>Riohacha</option>
-    <option>Quibdó</option>
-    <option>Florencia</option>
-    <option>Yopal</option>
-    <option>Mocoa</option>
-    <option>San Andrés</option>
-    <option>Arauca</option>
-    <option>Puerto Carreño</option>
-    <option>Inírida</option>
-    <option>Mitú</option>
-    <option>Leticia</option>
+          <option value="" selected disabled>Ciudad de residencia</option>
+          <option value="Bogotá">Bogotá</option>
+<option value="Medellín">Medellín</option>
+<option value="Cali">Cali</option>
+<option value="Barranquilla">Barranquilla</option>
+<option value="Cartagena">Cartagena</option>
+<option value="Bucaramanga">Bucaramanga</option>
+<option value="Manizales">Manizales</option>
+<option value="Pereira">Pereira</option>
+<option value="Armenia">Armenia</option>
+<option value="Cúcuta">Cúcuta</option>
+<option value="Ibagué">Ibagué</option>
+<option value="Pasto">Pasto</option>
+<option value="Popayán">Popayán</option>
+<option value="Santa Marta">Santa Marta</option>
+<option value="Villavicencio">Villavicencio</option>
+<option value="Neiva">Neiva</option>
+<option value="Valledupar">Valledupar</option>
+<option value="Montería">Montería</option>
+<option value="Tunja">Tunja</option>
+<option value="Riohacha">Riohacha</option>
+<option value="Quibdó">Quibdó</option>
+<option value="Florencia">Florencia</option>
+<option value="Yopal">Yopal</option>
+<option value="Mocoa">Mocoa</option>
+<option value="San Andrés">San Andrés</option>
+<option value="Arauca">Arauca</option>
+<option value="Puerto Carreño">Puerto Carreño</option>
+<option value="Inírida">Inírida</option>
+<option value="Mitú">Mitú</option>
+<option value="Leticia">Leticia</option>
         </select>
       </div>
 
       <div class="input-group">
        
-        <input type="password" id="contrasena" placeholder="Contraseña" />
+        <input type="password" id="contrasena" minlength="8" maxlength="30" placeholder="Contraseña" />
       </div>
       <div class="input-group">
         
@@ -108,8 +108,8 @@
       </div>
     </form>
   </div>
-  <script src="/js/firebaseConfig.js" type="module">
+  <script type="module" src="/js/register.js"></script>
   </script>
-    <script src="/js/autenticación.js"></script>
+    
 </body>
 </html>

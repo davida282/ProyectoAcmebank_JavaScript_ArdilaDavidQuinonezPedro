@@ -1,0 +1,129 @@
+body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1e222d;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      height: 10.5vh;
+    }
+
+    .cerrar-sesion {
+      font-weight: 200;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'ADLaM Display', system-ui;
+    }
+
+    main {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .acciones {
+      background-color: #d9d9d9;
+      padding: 1.5rem;
+      border-radius: 20px;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr 1fr;
+      color: black;
+      max-width: 400px;
+    }
+
+    .accion {
+      background-color: #ff6e6e;
+      color: #1e222d;
+      border-radius: 10px;
+      padding: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      font-family: 'Actor', sans-serif;
+      cursor: pointer;
+    }
+
+    .logoExit {
+        height: 7.3vh;
+        background-color: #CFCF17;
+        border-radius: 20px;
+        cursor: pointer;
+
+    }
+
+    .accion:hover {
+      background-color: #ff4c4c;
+    }
+
+    .tarjeta {
+      background-color: #d9d9d9;
+      color: black;
+      border-radius: 20px;
+      padding: 1rem;
+      min-width: 300px;
+      height: 200px;
+      max-width: 300px;
+      text-align: left;
+
+    }
+
+    .tarjeta h3 {
+      margin: 0;
+      font-family: 'ADLaM Display';
+      text-align: left;
+    }
+
+    .tarjeta .saldo {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      font-family: 'Allerta', sans-serif;
+      text-align: right;
+      
+    }
+
+    .tarjeta .numcuenta {
+        font-family: 'Alumni Sans SC', sans-serif;
+        margin: 0;
+        font-size: 5vh;
+        text-align: left;
+    }
+    .tarjeta p {
+        text-align: right;
+        font-family: 'Actor', sans-serif;
+    }
+
+    .bienvenida {
+      font-size: 1.6rem;
+      margin-left: 6.5rem;
+      margin-top: 1rem;
+      font-family: 'Actor', sans-serif;
+    }
+
+    .resumenTransacciones {
+        height: 50px;
+    }
+
+    @media screen and (max-width: 768px) {
+      main {
+        flex-direction: initial;
+        gap: 2rem;
+      }
+      
+    }
+
+    

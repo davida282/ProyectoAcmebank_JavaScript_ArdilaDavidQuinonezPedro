@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - ACME</title>
     <link href="/css/login.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,25 +18,23 @@
     </div>
     <h2>Inicio de sesión</h2>
     
-    <form>
+    <form id="loginForm">
       <div class="input-group">
         
-        <input type="text" placeholder="Documento">
-        <div class="contenedor" onclick="toggleMenu()">
- <span class="flecha">▼</span>
-    <div class="opciones">
-        <a href="#" onclick="seleccionarOpcion(event)">TI</a>
-        <a href="#" onclick="seleccionarOpcion(event)">CC</a>
-        <a href="#" onclick="seleccionarOpcion(event)">TE</a>
-        <a href="#" onclick="seleccionarOpcion(event)">CE</a>
-    </div>
-</div>
+        <input type="text" id="documento"  placeholder="Documento">
+        <div class="selectcontenedor"><select id="tipoDoc" class="contenedor">
+          <option selected disabled>▼</option>
+          <option value="TI">TI</option>
+          <option value="CC">CC</option>
+          <option value="TE">TE</option>
+          <option value="CE">CE</option>
+        </select></div>
         
       </div>
       
       <div class="input-group">
         
-        <input type="password" placeholder="Contraseña">
+        <input type="password" id="contrasena" placeholder="Contraseña" minlength="8" maxlength="30" >
       </div>
 
       <div class="remember">
@@ -47,77 +45,13 @@
       <button type="submit">Iniciar Sesión</button>
 
       <div class="extras">
-        <p class="forgot"><a href="#">¿Olvidaste tu contraseña?</a></p>
+        <p class="forgot"><a href="/html/recuperacionContra.html">¿Olvidaste tu contraseña?</a></p>
         <p class="new">Usuario nuevo? <a href="/html/registro.html">Regístrate aquí</a></p>
       </div>
     </form>
   </div>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-    import { getDatabase, ref, set, get, child, onValue } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
   
-    const firebaseConfig = {
-      apiKey: "AIzaSyCnVIPEevJRjIk5rOryUofw9mLmZzVFUj0",
-      authDomain: "banco-acme-a5567.firebaseapp.com",
-      databaseURL: "https://banco-acme-a5567-default-rtdb.firebaseio.com",
-      projectId: "banco-acme-a5567",
-      storageBucket: "banco-acme-a5567.firebasestorage.app",
-      messagingSenderId: "304465915351",
-      appId: "1:304465915351:web:8da84d30dea719fb0a6f92",
-      measurementId: "G-Y22KLMB354"
-    };
-  
-    // Inicializar Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  
-    // Inicializar la base de datos
-    const db = getDatabase();
-  
-    // Función para guardar un usuario
-    function guardarUsuario(id, nombre, saldo) {
-      set(ref(db, 'usuarios/' + id), {
-        nombre: nombre,
-        saldo: saldo
-      })
-      .then(() => {
-        console.log("✅ Usuario guardado correctamente");
-      })
-      .catch((error) => {
-        console.error("❌ Error al guardar usuario:", error);
-      });
-    }
-  
-    // Función para leer un usuario
-    function leerUsuario(id) {
-      const dbRef = ref(db);
-      get(child(dbRef, `usuarios/${id}`)).then((snapshot) => {
-        if (snapshot.exists()) {
-          console.log("📥 Usuario encontrado:", snapshot.val());
-        } else {
-          console.log("⚠️ No se encontró el usuario.");
-        }
-      }).catch((error) => {
-        console.error("❌ Error al leer:", error);
-      });
-    }
-  
-    // Puedes probarlas así:
-    guardarUsuario("001", "David Ardila", 1000000);
-    leerUsuario("001");
-  
-    // También puedes escuchar en tiempo real
-    const usuariosRef = ref(db, 'usuarios/');
-    onValue(usuariosRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log("📡 Cambios en la base de datos:", data);
-    });
-
-    
-  
-  </script>
-    <script src="/js/autenticación.js"></script>
+    <script type="module" src="/js/autenticación.js"></script>
     
     
 
