@@ -72,22 +72,22 @@ h1 {
     font-family: 'Afacad', sans-serif;
 }
 
-/* Placeholder color */
+
 input::placeholder {
     color: #aeb5c3;
 }
 
-/* Estilo específico antiguo (lo dejamos por si acaso) */
+
 input#cantidad {
     background-color: #2d2f34;
 }
 
-/* NUEVO: Estilo opcional para select cuando no está seleccionado */
+
 .form-group select:invalid {
     color: #aeb5c3;
 }
 
-/* Botones */
+
 .botones {
     display: flex;
     justify-content: space-between;

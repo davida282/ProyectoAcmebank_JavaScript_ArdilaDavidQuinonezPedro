@@ -1,11 +1,12 @@
-// autenticacion.js
+// Se importa el firebase a register.js
+
 import { db } from './firebaseConfig.js';
 import { get, ref, set } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
 const form = document.getElementById('registroForm');
     const documentoInput = document.getElementById('documento');
 
-    // ⛔ Impedir letras y limitar a 10 caracteres
+    // Impedir letras y limitar a 10 caracteres
     documentoInput.addEventListener('input', (e) => {
   e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
     });
@@ -39,7 +40,7 @@ apellidosInput.addEventListener('input', soloLetras);
         const contrasena = document.getElementById('contrasena').value.trim();
         const email = document.getElementById('email').value.trim();
       
-        
+        // Si los campos no se encuentran completados, entonces el programa tira una alerta pidiendole que los complete
         if (
           tipoDoc === "Tipo de documento" || tipoDoc === "" ||
           genero === "Género" || genero === "" ||
@@ -47,7 +48,7 @@ apellidosInput.addEventListener('input', soloLetras);
           documento === "" || telefono === "" || nombres === "" ||
           apellidos === "" || direccion === "" || contrasena === "" || email === ""
         ) {
-          alert("⚠️ Todos los campos son obligatorios. Por favor complétalos.");
+          alert("Todos los campos son obligatorios. Por favor complétalos.");
           return; 
         }
         
@@ -55,48 +56,51 @@ apellidosInput.addEventListener('input', soloLetras);
         const regexSoloLetras = /^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$/;
 
         if (!regexSoloLetras.test(nombres) || !regexSoloLetras.test(apellidos)) {
-            alert("🚫 Los nombres y apellidos deben contener solo letras.");
+            alert("Los nombres y apellidos deben contener solo letras.");
         return;
         }
 
+        // Se inicia el bloque de código que va a manejar los posibles errores que se van presentando
         try {
             
         const usuariosRef = ref(db, 'usuarios');
         const snapshotUsuarios = await get(usuariosRef);
 
-        // 🔒 Validación del documento
+        // Validación del documento
         const regexNumeros = /^\d{10}$/;
         if (!regexNumeros.test(documento)) {
-        alert("🚫 El número de documento debe tener exactamente 10 dígitos numéricos.");
+        alert("El número de documento debe tener exactamente 10 dígitos numéricos.");
         return;
      }
+
+     // Si el número de telefono no contiene exactamente 10 dígitos, la página le tira una alerta pidiendole que ingrese los 10 dígitos 
      if (telefono.length !== 10) {
-        alert("📱 El número de teléfono debe tener exactamente 10 dígitos.");
+        alert("El número de teléfono debe tener exactamente 10 dígitos.");
         return;
       }
         
-
+        
         if (snapshotUsuarios.exists()) {
-      const usuarios = snapshotUsuarios.val();
+        const usuarios = snapshotUsuarios.val();
       
       for (let key in usuarios) {
         const usuario = usuarios[key];
-        
+        // Si el usuario ingresa datos que ya se encuentran en la base de datos, entonces la página tira una alerta diciendo que ya existe
         if (usuario.documento === documento) {
-          alert("🚫 Ya existe un usuario con este número de documento.");
+          alert("Ya existe un usuario con este número de documento.");
           return;
         }
         if (usuario.telefono === telefono) {
-          alert("🚫 Ya existe un usuario con este número de teléfono.");
+          alert("Ya existe un usuario con este número de teléfono.");
           return;
         }
         if (usuario.email === email) {
-          alert("🚫 Ya existe un usuario con este correo electrónico.");
+          alert("Ya existe un usuario con este correo electrónico.");
           return;
         }
       }
     }
-            // 1. Obtener el contador actual
+            // Obtener el contador actual
             const contadorRef = ref(db, 'contadorCuentas');
             const snapshot = await get(contadorRef);
         
@@ -105,12 +109,12 @@ apellidosInput.addEventListener('input', soloLetras);
               numeroCuenta = snapshot.val() + 1;
             }
         
-            // 2. Actualizar el contador en Firebase
+            // Actualizar el contador en Firebase
             await set(contadorRef, numeroCuenta);
         
-            // 3. Guardar el usuario con su número de cuenta
+            // Guardar el usuario con su número de cuenta
             const userId = numeroCuenta;
-        
+            // Datos que van a guardarse en el Firebase
             await set(ref(db, 'usuarios/' + userId), {
              numeroCuenta: numeroCuenta,
               tipoDocumento: tipoDoc,
@@ -127,12 +131,12 @@ apellidosInput.addEventListener('input', soloLetras);
               saldo: 500000
             });
         
-            alert(`✅ Usuario registrado exitosamente.\nNúmero de cuenta: ${numeroCuenta}`);
+            alert(`Usuario registrado exitosamente.\nNúmero de cuenta: ${numeroCuenta}`);
             form.reset();
         
           } catch (error) {
-            console.error("❌ Error al registrar usuario:", error);
-            alert("❌ Ocurrió un error al registrar el usuario.");
+            console.error("Error al registrar usuario:", error);
+            alert("Ocurrió un error al registrar el usuario.");
           }
         });
       

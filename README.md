@@ -2,6 +2,8 @@
 
 Esta es una aplicación web interactiva que permite a los usuarios registrarse, iniciar sesión y gestionar sus cuentas bancarias de forma autónoma. Se desarrolló como parte de un proyecto académico con tecnologías modernas del entorno web y Firebase.
 
+Link de la maquetación del proyecto: **https://www.figma.com/design/2ltP2ckbBVCvXDRsEQifbR/banco-ACME?node-id=15-2725&t=5CBXQtgS8lBjOPSD-1**
+
 ---
 
 ## ⚙️ Instrucciones para instalar y ejecutar el proyecto

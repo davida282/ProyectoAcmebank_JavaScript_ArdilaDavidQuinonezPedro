@@ -1,26 +1,31 @@
+// Se importa el firebase a nuevaContra.js 
+
 import { db } from './firebaseConfig.js';
 import { get, update, ref } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
+// Espera a que el DOM esté completamente cargado antes de ejecutar el código
 document.addEventListener("DOMContentLoaded", () => {
+  
+  // Obtiene el formulario de recuperación de contraseña, el campo de contraseña y el campo para confirmar contraseña
   const form = document.getElementById("recuperarForm");
   const inputContrasena = document.getElementById("contrasena");
   const inputConfirmar = document.getElementById("confirmarContra");
 
-  // ❌ Bloquear entrada directa
+  // Bloquear entrada directa
   const accesoValido = sessionStorage.getItem('recuperacionValida');
   if (accesoValido !== 'true') {
-    alert("🚫 No puedes acceder a esta página directamente.");
+    alert("No puedes acceder a esta página directamente.");
     window.location.href = "/html/login.html";
     return;
   }
 
-  // 🔒 Bloquear navegación atrás
+  // Bloquear navegación atrás
   history.pushState(null, null, location.href);
   window.addEventListener('popstate', () => {
     history.pushState(null, null, location.href);
   });
 
-  // 🛡️ Limitar longitud máxima en tiempo real
+  // Limitar longitud máxima en tiempo real
   [inputContrasena, inputConfirmar].forEach(input => {
     input.addEventListener('input', () => {
       if (input.value.length > 16) {
@@ -29,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 🔍 Extraer UID de la URL
+  // Extraer UID de la URL
   const urlParams = new URLSearchParams(window.location.search);
   const uid = urlParams.get("uid");
 
@@ -40,22 +45,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmarContra = inputConfirmar.value.trim();
 
     if (!nuevaContra || !confirmarContra) {
-      alert("⚠️ Por favor, complete ambos campos de contraseña.");
+      alert("Por favor, complete ambos campos de contraseña.");
       return;
     }
 
     if (nuevaContra.length < 8) {
-      alert("🔒 La contraseña debe tener al menos 8 caracteres.");
+      alert("La contraseña debe tener al menos 8 caracteres.");
       return;
     }
 
     if (nuevaContra !== confirmarContra) {
-      alert("❌ Las contraseñas no coinciden.");
+      alert("Las contraseñas no coinciden.");
       return;
     }
 
     if (!uid) {
-      alert("⚠️ No se encontró el usuario. Intente nuevamente desde el inicio.");
+      alert("No se encontró el usuario. Intente nuevamente desde el inicio.");
       return;
     }
 
@@ -68,24 +73,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const contraActual = usuario.contrasena;
 
         if (contraActual === nuevaContra) {
-          alert("⚠️ La nueva contraseña no puede ser igual a la contraseña actual.");
+          alert("La nueva contraseña no puede ser igual a la contraseña actual.");
           return;
         }
 
         await update(userRef, { contrasena: nuevaContra });
 
-        // ✅ Todo bien, borrar el acceso temporal
+        // Todo bien, borrar el acceso temporal
         sessionStorage.removeItem('recuperacionValida');
 
-        alert("✅ Contraseña cambiada con éxito.");
+        alert("Contraseña cambiada con éxito.");
         window.location.href = "/html/login.html";
       } else {
-        alert("❌ No se encontró el usuario.");
+        alert("No se encontró el usuario.");
       }
 
     } catch (error) {
-      console.error("❌ Error al actualizar la contraseña:", error);
-      alert("❌ Ocurrió un error al cambiar la contraseña. Intenta más tarde.");
+      console.error("Error al actualizar la contraseña:", error);
+      alert("Ocurrió un error al cambiar la contraseña. Intenta más tarde.");
     }
   });
 });

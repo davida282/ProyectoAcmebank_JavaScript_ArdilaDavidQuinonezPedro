@@ -1,15 +1,22 @@
+// Se importa el firebase a retiroDinero.js
+
 import { db } from './firebaseConfig.js';
 import { get, ref, update, push } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
+// Espera a que el DOM esté completamente cargado antes de ejecutar el código
 window.addEventListener('DOMContentLoaded', () => {
+
+  
   const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
 
+  // Si el usuario no se encuentra en el Local Storage como usuario activo, la página dice con una alerta que no ha iniciado sesión y lo redirije a login
   if (!usuarioActivo) {
-    alert("⚠️ No has iniciado sesión. Serás redirigido al login.");
+    alert("No has iniciado sesión. Serás redirigido al login.");
     window.location.href = "login.html";
     return;
   }
 
+  // Se obtienen las constantes desde las ID propuestas en el HTML
   const cuentaInput = document.getElementById('numCuenta');
   const nombreInput = document.getElementById('usuario');
   const cantidadInput = document.getElementById('cantidad');
@@ -24,19 +31,21 @@ window.addEventListener('DOMContentLoaded', () => {
     cantidadInput.value = cantidadInput.value.replace(/[^0-9]/g, '');
   });
 
+  // Se añade un evento para que la persona pueda confirmar los datos
   confirmarBtn.addEventListener('click', async (e) => {
     e.preventDefault();
+
 
     const cantidad = cantidadInput.value.trim();
     const cantidadNumerica = parseInt(cantidad);
 
     if (!cantidad || isNaN(cantidadNumerica) || cantidadNumerica <= 0) {
-      alert("🚫 Ingresa un valor válido mayor a $0.");
+      alert("Ingresa un valor válido mayor a $0.");
       return;
     }
 
     if (cantidadNumerica < 10000) {
-      alert("🚫 El valor mínimo de retiro es de $10.000.");
+      alert("El valor mínimo de retiro es de $10.000.");
       return;
     }
 
@@ -45,14 +54,14 @@ window.addEventListener('DOMContentLoaded', () => {
       const userSnapshot = await get(userRef);
 
       if (!userSnapshot.exists()) {
-        alert("❌ No se encontró la cuenta del usuario.");
+        alert("No se encontró la cuenta del usuario.");
         return;
       }
 
       const userData = userSnapshot.val();
 
       if (cantidadNumerica > userData.saldo) {
-        alert("💸 No tienes suficiente saldo para retirar esa cantidad.");
+        alert("No tienes suficiente saldo para retirar esa cantidad.");
         return;
       }
 
@@ -85,8 +94,8 @@ window.addEventListener('DOMContentLoaded', () => {
       window.location.href = "/screens/completedRetiro.html";
 
     } catch (error) {
-      console.error("❌ Error al procesar el retiro:", error);
-      alert("⚠️ Hubo un error al procesar tu retiro.");
+      console.error("Error al procesar el retiro:", error);
+      alert("Hubo un error al procesar tu retiro.");
     }
   });
 });

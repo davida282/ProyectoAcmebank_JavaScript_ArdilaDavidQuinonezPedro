@@ -41,30 +41,30 @@ h1 {
 
 .formulario {
     display: flex;
-    flex-direction: column; /* Keep this for stacking the form-groups */
+    flex-direction: column; 
     gap: 20px;
     
 }
 
-/* NEW: Styles for each form group (label + input) */
+
 .form-group {
-    display: flex; /* Make label and input sit side-by-side */
-    align-items: center; /* Vertically align them */
-    gap: 15px; /* Space between label and input */
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
     
 }
 
 .form-group label {
-    flex-shrink: 0; /* Prevent label from shrinking */
-    width: 120px; /* Adjust this width as needed for your labels */
-    text-align: center; /* Align label text to the right */
+    flex-shrink: 0; 
+    width: 120px; 
+    text-align: center; 
     font-weight: 100;
     font-size: 1rem;
     font-family: 'Allerta', sans-serif;
 }
 
-.form-group input { /* Target inputs inside form-group */
-    flex-grow: 1; /* Allow input to fill remaining space */
+.form-group input { 
+    flex-grow: 1; 
     padding: 5px 15px;
     border: none;
     border-radius: 4px;
@@ -74,7 +74,7 @@ h1 {
     font-family: 'Afacad', sans-serif;
 }
 
-/* Original input styles that still apply or are overridden */
+
 input::placeholder {
     color: #aeb5c3;
 }

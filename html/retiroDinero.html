@@ -16,7 +16,7 @@
             <img src="/imgs/BancoLogo.png" alt="Banco" class="logo">
             <h1>Retirar Dinero</h1>
         </div>
-
+        <!-- Se introduce un formulario que se autorellena con el número de cuenta y el nombre del usuario con la sesión abierta -->
         <form class="formulario">
             <div class="form-group">
                 <label for="cuenta">Núm de cuenta</label>
@@ -27,12 +27,12 @@
                 <label for="usuario">Usuario</label>
                 <input type="text" id="usuario" disabled>
             </div>
-
+            <!-- Se introduce el input para que el usuario pueda ingresar la cantidad de dinero que desea retirar -->
             <div class="form-group">
                 <label for="cantidad">Cantidad</label>
                 <input type="text" id="cantidad" placeholder="$ Valor a Retirar">
             </div>
-
+            <!-- Se introducen los botones que permiten que el usuario pueda volver a el dashboard o confirmar el retiro -->
             <div class="botones">
                 <a href="dashboard.html" class="volver">Volver</a>
                 <button type="submit" class="confirmar" id="confirmarBtn">CONFIRMAR</button>

@@ -1,17 +1,23 @@
+// Se importa el firebase a resultExtract.js
+
 import { db } from './firebaseConfig.js';
 import { get, ref } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
+// Espera a que el DOM esté completamente cargado antes de ejecutar el código
 window.addEventListener('DOMContentLoaded', async () => {
+
+  // Se obtienen las constantes desde las ID propuestas en el HTML
   const tablaTransacciones = document.getElementById('tabla-transacciones');
   const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
   const filtros = JSON.parse(localStorage.getItem('filtrosExtracto'));
 
   if (!usuarioActivo || !filtros) {
-    alert("⛔ Información incompleta. Redirigiendo al login.");
+    alert("Información incompleta. Redirigiendo al login.");
     window.location.href = "/html/login.html";
     return;
   }
-
+  
+  // Se inicia el bloque de código que va a manejar los posibles errores que se van presentando
   try {
     const transaccionesRef = ref(db, `transacciones/${usuarioActivo.numeroCuenta}`);
     const snapshot = await get(transaccionesRef);
@@ -64,7 +70,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     });
 
   } catch (error) {
-    console.error("❌ Error al obtener el extracto:", error);
+    console.error("Error al obtener el extracto:", error);
     alert("Hubo un error al cargar el extracto.");
     window.location.href = "/html/dashboard.html";
   }
