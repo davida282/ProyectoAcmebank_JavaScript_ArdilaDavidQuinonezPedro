@@ -16,7 +16,7 @@
       <img src="/imgs/BancoLogo.png" alt="Banco" class="logo">
       <h1>Pago de Servicios Públicos</h1>
     </div>
-
+    <!-- Se incluye un formulario que va a autocompletar con la información del usuario que se encuentra en sesión -->
     <form class="formulario">
       <div class="form-group">
         <label for="cuenta">Núm de cuenta</label>
@@ -27,7 +27,7 @@
         <label for="usuario">Usuario</label>
         <input type="text" id="usuario" disabled>
       </div>
-
+      <!-- Se pide el servicio público a pagar, la referencia del recibo (número cualquiera de 10 dígitos exactos) y la cantidad de dinero a pagar por dicho recibo -->
       <div class="form-group">
         <label for="servicio">Servicio</label>
         <select id="servicio">
@@ -48,7 +48,7 @@
         <label for="cantidad">Cantidad</label>
         <input type="text" id="cantidad" placeholder="$ Valor a Pagar">
       </div>
-
+      <!-- Se incluyen los botones que permiten que el usuario pueda retroceder a el dashboard y que pueda confirmar el pago del servicio -->
       <div class="botones">
         <a href="dashboard.html" class="volver">Volver</a>
         <button type="submit" class="confirmar">CONFIRMAR</button>
